@@ -9,11 +9,11 @@ public class ParkingScript : MonoBehaviour
    
    [SerializeField] private float stopSpeed;
    [SerializeField] private Rigidbody _busRB;
-   [SerializeField] private PlayerController _playerController;
+   //[SerializeField] private PlayerController _playerController;
 
    private void Start()
    {
-      _playerController = GetComponent<PlayerController>();
+     // _playerController = GetComponent<PlayerController>();
       _busRB = playableCharacter.GetComponent<Rigidbody>();
    }
 
@@ -27,6 +27,5 @@ public class ParkingScript : MonoBehaviour
          //prompt player to signal they are ready
          //resume auto-driving and gameplay
       }
-
    }
 }
