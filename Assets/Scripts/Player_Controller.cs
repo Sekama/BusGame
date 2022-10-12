@@ -12,7 +12,7 @@ public class Player_Controller : MonoBehaviour
     public InputMaster playerInputMaster;
     //Variables for Movement
     [SerializeField] private float _turnSpeed = 30;
-    [SerializeField] private float _moveSpeed = 10;
+    public float _moveSpeed = 10;
     [SerializeField] private float _brakeSpeed = 1;
     [SerializeField] private float _accSpeed = 1;
     // acceleration speed in case of passenger alteration?
@@ -22,7 +22,7 @@ public class Player_Controller : MonoBehaviour
     private bool _bIsRightPressed = false;
 
     //Variables for Pickup and Drop
-    private bool _bIsAtStation = false;
+    public bool _bIsAtStation = false;
     
     private void Awake()
     {
