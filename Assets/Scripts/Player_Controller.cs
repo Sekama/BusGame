@@ -7,13 +7,16 @@ using UnityEngine.InputSystem;
 public class Player_Controller : MonoBehaviour
 {
     //Static const
-    static float MAX_SPEED = 10;
+    static float MAX_SPEED = 50;
     //References For Movement
     public InputMaster playerInputMaster;
     //Variables for Movement
-    private float _turnSpeed = 30;
-    private float _moveSpeed = 50;
-    private float _brakeSpeed = 1;
+    [SerializeField] private float _turnSpeed = 30;
+    [SerializeField] private float _moveSpeed = 10;
+    [SerializeField] private float _brakeSpeed = 1;
+    [SerializeField] private float _accSpeed = 1;
+    // acceleration speed in case of passenger alteration?
+    
     private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
     private bool _bIsRightPressed = false;
@@ -59,7 +62,7 @@ public class Player_Controller : MonoBehaviour
         }
         else
         {
-            _moveSpeed = Mathf.Clamp(_moveSpeed += _brakeSpeed, 0, MAX_SPEED);
+            _moveSpeed = Mathf.Clamp(_moveSpeed += _accSpeed, 0, MAX_SPEED);
         }
 
 
