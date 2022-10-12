@@ -31,11 +31,11 @@ public class BatteryController : MonoBehaviour
     private void CollissionBatteryDamage()
     {
         //Replace if with OnCollissionEnter
-        if (Input.anyKeyDown)
-        {
-            currentBatteryTime -= batteryStep;
-            Debug.Log("Ouch!");
-        }
+        // if (Input.anyKeyDown)
+        // {
+        //     currentBatteryTime -= batteryStep;
+        //     Debug.Log("Ouch!");
+        // }
     }
     
     private void BatteryLife()
