@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Timeline;
 
 
 public class Player_Controller : MonoBehaviour
@@ -16,7 +17,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private float _brakeSpeed = 1;
     [SerializeField] private float _accSpeed = 1;
     // acceleration speed in case of passenger alteration?
-    
+
     private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
     private bool _bIsRightPressed = false;
@@ -24,8 +25,16 @@ public class Player_Controller : MonoBehaviour
     //Variables for Pickup and Drop
     public bool _bIsAtStation = false;
     
+    [Header("AUDIO")]
+    [SerializeField] private AudioClip accelerateSound;
+    [SerializeField] private AudioClip mainMotorSound;
+    [SerializeField] private AudioClip stopSound;
+    private AudioSource m_myAudioSource;
+    
     private void Awake()
     {
+        m_myAudioSource = GetComponent<AudioSource>();
+
         //Binding the Player Input System to the Controller
         playerInputMaster = new InputMaster();
         playerInputMaster.Player_XBox.Enable();
@@ -59,10 +68,17 @@ public class Player_Controller : MonoBehaviour
         if(_bIsBraking)
         {
             _moveSpeed = Mathf.Clamp(_moveSpeed -= _brakeSpeed, 0, MAX_SPEED);
+            
+            //Play sounds
+            m_myAudioSource.PlayOneShot(stopSound, volumeScale:.08f);
         }
         else
         {
             _moveSpeed = Mathf.Clamp(_moveSpeed += _accSpeed, 0, MAX_SPEED);
+            
+            //Play sounds
+            m_myAudioSource.PlayOneShot(accelerateSound, volumeScale:.08f);
+            m_myAudioSource.PlayOneShot(mainMotorSound, volumeScale:.05f);
         }
 
 
