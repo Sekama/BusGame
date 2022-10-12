@@ -212,6 +212,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1310792610696845973, guid: 360a4e33407cdff4d8a0f148ccfc161f, type: 3}
+      propertyPath: timeStopped
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310792610696845973, guid: 360a4e33407cdff4d8a0f148ccfc161f, type: 3}
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 1123035045}

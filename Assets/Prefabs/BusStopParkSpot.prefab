@@ -154,8 +154,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playableCharacter: {fileID: 0}
   playerCollider: {fileID: 0}
-  stopSpeed: 25
+  _stopSpeed: 25
   _playerController: {fileID: 0}
+  _mainMat: {fileID: 2100000, guid: aa388c0010e12a342976a5f96b652608, type: 2}
+  _stoppedMat: {fileID: 2100000, guid: 6bd79ee9126b51d4b925dbeeb6f3a4e7, type: 2}
+  _meshRenderer: {fileID: 3784802635768410152}
+  timeStopped: 3
 --- !u!54 &6641430799501862009
 Rigidbody:
   m_ObjectHideFlags: 0
