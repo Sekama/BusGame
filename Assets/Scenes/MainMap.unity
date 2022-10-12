@@ -676,6 +676,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1653918414232493557, guid: 4ebe1fe302566dc4099301bff7733bfc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9835817
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653918414232493557, guid: 4ebe1fe302566dc4099301bff7733bfc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.18046345
+      objectReference: {fileID: 0}
     - target: {fileID: 3721637006489904137, guid: 4ebe1fe302566dc4099301bff7733bfc, type: 3}
       propertyPath: m_Follow
       value: 
@@ -684,6 +692,14 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1196090021}
+    - target: {fileID: 8890391236528302366, guid: 4ebe1fe302566dc4099301bff7733bfc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9835817
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890391236528302366, guid: 4ebe1fe302566dc4099301bff7733bfc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.18046345
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ebe1fe302566dc4099301bff7733bfc, type: 3}
 --- !u!1 &467988794
@@ -1360,11 +1376,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3147029751289558442, guid: 360a4e33407cdff4d8a0f148ccfc161f, type: 3}
   m_PrefabInstance: {fileID: 827051389}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &1001635816 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1653918414232493554, guid: 4ebe1fe302566dc4099301bff7733bfc, type: 3}
-  m_PrefabInstance: {fileID: 455603955}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1003476255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,10 +1831,6 @@ PrefabInstance:
       propertyPath: busStop.Array.data[1]
       value: 
       objectReference: {fileID: 993492121}
-    - target: {fileID: 8867253352619040514, guid: 0d39071b302257a4f841dffd8113f1e5, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1001635816}
     - target: {fileID: 8867253352619040525, guid: 0d39071b302257a4f841dffd8113f1e5, type: 3}
       propertyPath: m_Name
       value: Player
