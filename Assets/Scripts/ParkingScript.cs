@@ -20,10 +20,12 @@ public class ParkingScript : MonoBehaviour
 
    private void OnTriggerStay(Collider other)
    {
+      // playerController._moveSpeed is set to public
       if (other == playerCollider && _playerController._moveSpeed <= stopSpeed)
       {
          Debug.Log("slow enough");
          //Stop the bus's forward auto-drive and disable controls
+         //bIsAtStation is set to public
          _playerController._bIsAtStation = true;
          //play boarding animation
          //apply driving modifiers
