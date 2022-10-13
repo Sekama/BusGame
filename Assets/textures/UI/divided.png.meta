@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: a8273b1a1d3655b43afbd0c3d5643881
+<<<<<<<< HEAD:Assets/textures/UI/Battery/Asset 11.png.meta
+guid: b812cbb1a9cc6b040b997b3506318ce7
+========
+guid: ac8906c3116bbb04480fd085f3c3ab42
+>>>>>>>> main:Assets/textures/UI/divided.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,11 +43,11 @@ TextureImporter:
     wrapU: 0
     wrapV: 0
     wrapW: 0
-  nPOTScale: 0
+  nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
-  spriteExtrude: 0
+  spriteMode: 0
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -53,7 +57,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1

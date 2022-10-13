@@ -13,7 +13,7 @@ public class Player_Controller : MonoBehaviour
     //Variables for Movement
     [SerializeField] private float _turnSpeed = 30;
     public float MoveSpeed { get; private set; }
-    private float _max_speed = 50;
+    private float _max_speed = 25;
     [SerializeField] private float _brakeSpeed = 1;
     [SerializeField] private float _accSpeed = 1;
     // acceleration speed in case of passenger alteration?
@@ -21,7 +21,6 @@ public class Player_Controller : MonoBehaviour
     private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
     private bool _bIsRightPressed = false;
-
     //Passenger Alteration variables
     public float MaxSpeedMod;
     public float WobbleMod;
@@ -135,6 +134,8 @@ public class Player_Controller : MonoBehaviour
     {
         MoveSpeed += deltaMove;
     }
+
+   
 
 
 }

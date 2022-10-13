@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: b812cbb1a9cc6b040b997b3506318ce7
+<<<<<<<< HEAD:Assets/textures/UI/Battery/1x/Asset 12.png.meta
+guid: 2be60d80ff74c4140830cee5e70647e7
+========
+guid: 21b8e591c8e293a4d8e71ece2967ed55
+>>>>>>>> main:Assets/textures/UI/Battery/Asset 11.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ParkingScript : MonoBehaviour
 {
+    //Event Delegates
+    public delegate void FCheckDropoffs();
+    FCheckDropoffs CheckDropOffs;
     public GameObject playableCharacter;
     public BoxCollider playerCollider;
 
@@ -22,11 +25,13 @@ public class ParkingScript : MonoBehaviour
     public GameObject PassengerPreFab;
     private List<GameObject> _passengers;
     private BusStateManager busStateManager;
+    private List<GameObject> _garbagePassengers;
 
 
     private void Awake()
     {
         _passengers = new List<GameObject>();
+        _garbagePassengers = new List<GameObject>();
     }
     private void Start()
     {
@@ -34,12 +39,8 @@ public class ParkingScript : MonoBehaviour
         playerCollider = playableCharacter.GetComponent<BoxCollider>();
         _meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         busStateManager = playableCharacter.GetComponent<BusStateManager>();
-        //Testing
-        int temp = Random.Range(1, 4);
-        for(int i = 0; i < temp; ++i)
-        {
-            CreatePassenger(PossiblePassengers[Random.Range(0, PossiblePassengers.Count)]);
-        }
+        CreatePickups();
+        
         
         
     }
@@ -52,29 +53,61 @@ public class ParkingScript : MonoBehaviour
             //bIsAtStation is set to public
             _playerController._bIsAtStation = true;
             _meshRenderer.material = _stoppedMat;
+            CheckDropOffs += busStateManager.ReduceStopCount;
+            CheckDropOffs();
+            CreateDropOffs(ref busStateManager.PassengersDropOff);
             //play boarding animation
             Invoke("SendPassengersToBus", timeStopped / 2);
             //apply driving modifiers
             //prompt player to signal they are ready
-            Invoke("ResumeDriving", timeStopped);
+            //Invoke("ResumeDriving", timeStopped);
             //resume auto-driving and gameplay
         }
     }
 
     private void ResumeDriving()
     {
-        
+        CheckDropOffs -= busStateManager.ReduceStopCount;
         _playerController._bIsAtStation = false;
         _meshRenderer.material = _mainMat;
+        Invoke("CreatePickups", 2f);
+    }
+    void CreatePickups()
+    {
+        Debug.Log("Create Pickups Called");
+        foreach(var Passenger in _garbagePassengers)
+        {
+            Passenger.GetComponent<BotScript>().CallDestroy();
+        }
+        _garbagePassengers.Clear();
+        int temp = Random.Range(1, 4);
+        for (int i = 0; i < temp; ++i)
+        {
+            _passengers.Add(CreatePassenger(PossiblePassengers[Random.Range(0, PossiblePassengers.Count)]));
+        }
     }
 
-    void CreatePassenger(PassengerData InData)
+    void CreateDropOffs(ref List<BotScript> OutDropOffPassengers)
+    {
+        foreach (var Passenger in OutDropOffPassengers)
+        {
+            GameObject PassengerPF = Passenger.gameObject;
+            PassengerPF.transform.parent = gameObject.transform;
+            float randpos = Random.Range(-5f, +5f);
+            PassengerPF.transform.localPosition = new Vector3(randpos, 0, randpos);
+            PassengerPF.GetComponent<MeshRenderer>().enabled = true;
+            _garbagePassengers.Add(PassengerPF);
+        }
+        OutDropOffPassengers.Clear();
+    }
+    GameObject CreatePassenger(PassengerData InData)
     {
         GameObject Passenger = GameObject.Instantiate(PassengerPreFab, gameObject.transform);
         Passenger.GetComponent<BotScript>().SetBot(InData);
         float randpos = Random.Range(-5f, +5f);
         Passenger.transform.localPosition = new Vector3(randpos, 0, randpos);// Delete Later Maybe?
-        _passengers.Add(Passenger);
+        /*_passengers.Add(Passenger)*/
+        return Passenger;
     }
 
     void SendPassengersToBus()
@@ -82,8 +115,9 @@ public class ParkingScript : MonoBehaviour
         
         foreach(var Passenger in _passengers)
         {
-            busStateManager.AddPassenger(Passenger.GetComponent<BotScript>().PasData);
-            Destroy(Passenger);
+            busStateManager.AddPassenger(Passenger.GetComponent<BotScript>());
+            Passenger.transform.parent = busStateManager.gameObject.transform;
+            Passenger.GetComponent<MeshRenderer>().enabled = false;
         }
         _passengers.Clear();
         
