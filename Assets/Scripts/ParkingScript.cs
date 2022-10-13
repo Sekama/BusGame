@@ -60,7 +60,7 @@ public class ParkingScript : MonoBehaviour
             Invoke("SendPassengersToBus", timeStopped / 2);
             //apply driving modifiers
             //prompt player to signal they are ready
-            Invoke("ResumeDriving", timeStopped);
+            //Invoke("ResumeDriving", timeStopped);
             //resume auto-driving and gameplay
         }
     }
@@ -74,10 +74,12 @@ public class ParkingScript : MonoBehaviour
     }
     void CreatePickups()
     {
+        Debug.Log("Create Pickups Called");
         foreach(var Passenger in _garbagePassengers)
         {
             Passenger.GetComponent<BotScript>().CallDestroy();
         }
+        _garbagePassengers.Clear();
         int temp = Random.Range(1, 4);
         for (int i = 0; i < temp; ++i)
         {
@@ -94,6 +96,7 @@ public class ParkingScript : MonoBehaviour
             float randpos = Random.Range(-5f, +5f);
             PassengerPF.transform.localPosition = new Vector3(randpos, 0, randpos);
             PassengerPF.GetComponent<MeshRenderer>().enabled = true;
+            _garbagePassengers.Add(PassengerPF);
         }
         OutDropOffPassengers.Clear();
     }
