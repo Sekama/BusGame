@@ -7,6 +7,7 @@ public class BotScript : MonoBehaviour
     public MeshFilter BotMesh;
     public MeshRenderer BotRenderer;
     public PassengerData PasData;
+    public int StopsLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +26,16 @@ public class BotScript : MonoBehaviour
         PasData = InData;
         BotMesh.mesh = PasData.BotMesh;
         BotRenderer.material = InData.BotMaterial;
+        StopsLeft = PasData.NoOfStops;
+    }
+
+    public void CallDestroy()
+    {
+        Invoke("DestroySelf", 2f);
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

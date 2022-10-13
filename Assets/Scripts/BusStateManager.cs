@@ -6,7 +6,8 @@ public class BusStateManager : MonoBehaviour
 {
     [SerializeField] Player_Controller _pc;
     //Variable to Store The Passenger INfo
-    public List<PassengerData> PassengersOnBoard;
+    public List<BotScript> PassengersOnBoard;
+    public List<BotScript> PassengersDropOff;
     private float _accMod;
     private float _brakeMod;
     private float _maxSpeedMod;
@@ -18,10 +19,10 @@ public class BusStateManager : MonoBehaviour
 
     private void Awake()
     {
-        PassengersOnBoard = new List<PassengerData>();
+        PassengersOnBoard = new List<BotScript>();
+        PassengersDropOff = new List<BotScript>();
     }
 
-    //Remove Passenger
     // Start is called before the first frame update
     void Start()
     {
@@ -48,42 +49,62 @@ public class BusStateManager : MonoBehaviour
         _accMod = _brakeMod = _maxSpeedMod = _wobbleMod = 0;
         foreach (var Passenger in PassengersOnBoard)
         {
-            switch(Passenger.PasType)
+            switch(Passenger.PasData.PasType)
             {
                 case EPassengerType.Bashful:
-                    _maxSpeedMod += Passenger.SpeedMod;
+                    _maxSpeedMod += Passenger.PasData.SpeedMod;
                     break;
                 case EPassengerType.Dopey:
-                    _wobbleMod += Passenger.WobbleMod;
+                    _wobbleMod += Passenger.PasData.WobbleMod;
                     break;
                 case EPassengerType.Sleepy:
-                    _maxSpeedMod += Passenger.SpeedMod;
+                    _maxSpeedMod += Passenger.PasData.SpeedMod;
                     break;
             }
         }
 
         SendEffects();
     }
-
+    //Reduce StopCounts on Passengers
+    public void ReduceStopCount()
+    {
+        foreach(var Passenger in PassengersOnBoard)
+        {
+            --Passenger.StopsLeft;
+            
+        }
+        CollectDropOffs();
+    }
 
     //Add Passenger
-    public void AddPassenger(PassengerData InPassenger)
+    public void AddPassenger(BotScript InPassenger)
     {
-        Debug.Log(InPassenger.PasType);
+        
         PassengersOnBoard.Add(InPassenger);
         CollateEffects();
     }
 
-    public void RemovePassenger(string InName)
+    public void CollectDropOffs()
     {
         foreach(var Passenger in PassengersOnBoard)
         {
-            if(Passenger.Name == InName)
+            if (Passenger.StopsLeft == 0)
             {
-                PassengersOnBoard.Remove(Passenger);
-                CollateEffects();
-                return;
+                PassengersDropOff.Add(Passenger);
+                
             }
         }
+        foreach(var Passenger in PassengersDropOff)
+        {
+            PassengersOnBoard.Remove(Passenger);
+        }
+        CollateEffects();
     }
+    ////Remove Passenger
+    //public void RemovePassenger(BotScript InPassenger)
+    //{
+    //    Debug.Log(PassengersOnBoard.Remove(InPassenger));
+    //    CollateEffects();
+    //    return;
+    //}
 }
