@@ -6,7 +6,7 @@ using UnityEngine;
 public class DirectionalArrow : MonoBehaviour
 {
 
-    public Transform directionalArrow;
+    public GameObject directionalArrow;
     
     public GameObject FindClosestBusStop()
     {
@@ -31,6 +31,6 @@ public class DirectionalArrow : MonoBehaviour
 
     private void Update()
     {
-        directionalArrow.LookAt(FindClosestBusStop().transform);
+        directionalArrow.transform.LookAt(FindClosestBusStop().transform);
     }
 }
