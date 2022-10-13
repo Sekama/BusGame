@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Instructions Scene.unity
     guid: e80763cd32e12f34dac256e2134f92c4
   - enabled: 1
-    path: Assets/Scenes/MainMap.unity
-    guid: 963b3c89cb579e64298b32fef3e6ee6f
+    path: Assets/Scenes/MainMap 1.unity
+    guid: 59f3112f441c1c042bb355311c83476c
   - enabled: 1
     path: Assets/Scenes/End Scene.unity
     guid: bf01c4491b2d13649be7edd068c6c9d1
