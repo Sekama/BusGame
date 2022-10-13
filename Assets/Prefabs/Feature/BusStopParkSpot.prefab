@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546064670946483073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.29, z: 0}
-  m_LocalScale: {x: 1.2433063, y: 1.238761, z: 1.4425019}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6.8192687, y: 0.66330236, z: 12.276154}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3147029751289558442}
@@ -92,7 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3147029751289558442}
-  - component: {fileID: 3147029751289558441}
   - component: {fileID: 3147029751289558440}
   - component: {fileID: 1310792610696845973}
   - component: {fileID: 6641430799501862009}
@@ -112,21 +111,13 @@ Transform:
   m_GameObject: {fileID: 3147029751289558447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.246, y: 0.196, z: 0}
-  m_LocalScale: {x: 6.8192687, y: 0.66330236, z: 12.276154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7194698563973989541}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3147029751289558441
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147029751289558447}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &3147029751289558440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -138,8 +129,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 6.8064556, y: 0.78876436, z: 13.007648}
+  m_Center: {x: 0.0196414, y: -0.10561782, z: 0.49263954}
 --- !u!114 &1310792610696845973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +151,8 @@ MonoBehaviour:
   _stoppedMat: {fileID: 2100000, guid: 6bd79ee9126b51d4b925dbeeb6f3a4e7, type: 2}
   _meshRenderer: {fileID: 3784802635768410152}
   timeStopped: 3
+  PossiblePassengers: []
+  PassengerPreFab: {fileID: 4401938513091211197, guid: 84a1b440ca2b7734fb416e098fb9815e, type: 3}
 --- !u!54 &6641430799501862009
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8867253352619040526}
   - component: {fileID: 8867253352619040512}
   - component: {fileID: 8867253352619040514}
+  - component: {fileID: 8753050456376108203}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -80,9 +81,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turnSpeed: 120
-  _moveSpeed: 0
   _brakeSpeed: 0.1
   _accSpeed: 0.25
+  MaxSpeedMod: 0
+  WobbleMod: 0
+  AccMod: 0
+  BrakeMod: 0
   _bIsAtStation: 0
 --- !u!65 &8867253352619040512
 BoxCollider:
@@ -127,6 +131,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player_XBox
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8753050456376108203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867253352619040525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cbdc658ad93854a8650e124a719cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pc: {fileID: 8867253352619040526}
+  TestData: {fileID: 11400000, guid: cfea068cb334d86489ddaddefc94681f, type: 2}
 --- !u!1 &8867253354140039607
 GameObject:
   m_ObjectHideFlags: 0

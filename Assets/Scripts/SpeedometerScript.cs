@@ -19,6 +19,6 @@ public class SpeedometerScript : MonoBehaviour
     
     void Update()
     {
-        _textMeshPro.SetText(_playerController._moveSpeed.ToString("N0")); 
+        _textMeshPro.SetText(_playerController.MoveSpeed.ToString("N0")); 
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8ee9d3637b5ed4a9cf7be573c33533, type: 3}
+  m_Name: Bashful
+  m_EditorClassIdentifier: 
+  Name: 
+  PasType: 0
+  AccMod: 0
+  BrakeMod: 0
+  SpeedMod: 10
+  WobbleMod: 0
+  NoOfStops: 1
+  BotMesh: {fileID: 4300000, guid: 24d651d38842bc54680ab8908011f0f3, type: 3}
+  BotMaterial: {fileID: 2100000, guid: 28646867ddcf90a4989276acd313ea43, type: 2}
