@@ -4,8 +4,12 @@ using UnityEngine;
 public enum EPassengerType
 {
     Bashful,
+    Doc,
     Dopey,
-    Sleepy
+    Grumpy,
+    Happy,
+    Sleepy,
+    Sneezy
 };
 
 [CreateAssetMenu(fileName = "Passenger Data", menuName = "Passengers/ Passenger Data", order = 1)]
@@ -16,7 +20,9 @@ public class PassengerData : ScriptableObject
     public float AccMod;
     public float BrakeMod;
     public float SpeedMod;
-    public float WobbleMod;
+    public float TurnMod;
+    public bool canDrain;
+    public int Money;
     public int NoOfStops;
     public Mesh BotMesh;
     public Material BotMaterial;
