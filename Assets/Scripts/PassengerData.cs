@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public enum EPassengerType
 {
     Bashful,
@@ -24,6 +25,7 @@ public class PassengerData : ScriptableObject
     public bool canDrain;
     public int Money;
     public int NoOfStops;
+    public Sprite BotImage;
     public Mesh BotMesh;
-    public Material BotMaterial;
+    public Material[] BotMaterial;
 }

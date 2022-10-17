@@ -19,7 +19,6 @@ public class RechargeScript : MonoBehaviour
     [SerializeField] private int _unitCharge;
     private int _amountFill;
 
-    
     private void Awake()
     {
         _playableCharacter = GameObject.FindGameObjectWithTag("Player");

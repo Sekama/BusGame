@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BusStateManager : MonoBehaviour
 {
+    public delegate void FOnboardChanges();
+    public FOnboardChanges OnboardChanges;
     [SerializeField] Player_Controller _pc;
     public int MaxPassengers;
     //Variable to Store The Passenger INfo
@@ -35,6 +37,7 @@ public class BusStateManager : MonoBehaviour
         _pc.MaxSpeedMod = _maxSpeedMod;
         _pc.TurnMod = _turnMod;
         _pc.bCanDrain = _bCanDrain;
+        OnboardChanges();
     }
 
     //Common Functions to Collate the Effects of the Passegers
