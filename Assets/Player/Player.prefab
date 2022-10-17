@@ -45,9 +45,11 @@ GameObject:
   - component: {fileID: 8867253352619040514}
   - component: {fileID: 8753050456376108203}
   - component: {fileID: -8755377665360451555}
+  - component: {fileID: 23849001505419439}
+  - component: {fileID: 4634426443421469196}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8867253352619040525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.57, z: 0}
+  m_LocalPosition: {x: 0, y: 5.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82,14 +84,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ee1f4d834ba43469b9d2fb15f882a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turnSpeed: 120
-  _brakeSpeed: 0.1
-  _accSpeed: 0.25
   MaxSpeedMod: 0
-  WobbleMod: 0
+  TurnMod: 0
   AccMod: 0
   BrakeMod: 0
+  bCanDrain: 0
+  ConsumptionRate: 2
   _bIsAtStation: 0
+  Money: 100
 --- !u!65 &8867253352619040512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99,10 +101,10 @@ BoxCollider:
   m_GameObject: {fileID: 8867253352619040525}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2.8961928, y: 3.2670732, z: 7.943566}
-  m_Center: {x: -0.02164352, y: 1.6509683, z: -3.5177438}
+  m_Size: {x: 2.8961928, y: 3.0637727, z: 7.943566}
+  m_Center: {x: -0.02164352, y: 1.7526186, z: -3.5177438}
 --- !u!114 &8867253352619040514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,9 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pc: {fileID: 8867253352619040526}
+  MaxPassengers: 3
   PassengersOnBoard: []
   PassengersDropOff: []
-  TestData: {fileID: 11400000, guid: cfea068cb334d86489ddaddefc94681f, type: 2}
 --- !u!114 &-8755377665360451555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +164,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionalArrow: {fileID: 3025100675703455055}
+--- !u!54 &23849001505419439
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867253352619040525}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!114 &4634426443421469196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867253352619040525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c3928dd393e8d42a32ecb2ffed6456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Energy: 0
+  bHasEnergy: 0
 --- !u!1 &8867253354140039607
 GameObject:
   m_ObjectHideFlags: 0

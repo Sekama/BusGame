@@ -8,15 +8,17 @@ public class ParkingScript : MonoBehaviour
     //Event Delegates
     public delegate void FCheckDropoffs();
     FCheckDropoffs CheckDropOffs;
-    public GameObject playableCharacter;
-    public BoxCollider playerCollider;
+    private GameObject _playableCharacter;
+    private Player_Controller _playerController;
+    private BoxCollider _playerCollider;
 
     [SerializeField] private float _stopSpeed;
-    [SerializeField] private Player_Controller _playerController;
     [SerializeField] private Material _mainMat;
     [SerializeField] private Material _stoppedMat;
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private float timeStopped;
+    public Transform PickupTransform;
+    public Transform DropoffTransform;
 
     //Passenger LogiC Variables
     public List<PassengerData> PossiblePassengers;
@@ -24,7 +26,7 @@ public class ParkingScript : MonoBehaviour
     //Pickup And Drop Variables
     public GameObject PassengerPreFab;
     private List<GameObject> _passengers;
-    private BusStateManager busStateManager;
+    private BusStateManager _busStateManager;
     private List<GameObject> _garbagePassengers;
 
 
@@ -32,81 +34,103 @@ public class ParkingScript : MonoBehaviour
     {
         _passengers = new List<GameObject>();
         _garbagePassengers = new List<GameObject>();
+        _playableCharacter = GameObject.FindGameObjectWithTag("Player");
+        _playerController = _playableCharacter.GetComponent<Player_Controller>();
+        _busStateManager = _playableCharacter.GetComponent<BusStateManager>();
+        _playerCollider = _playableCharacter.GetComponent<BoxCollider>();
     }
     private void Start()
     {
-        _playerController = playableCharacter.GetComponent<Player_Controller>();
-        playerCollider = playableCharacter.GetComponent<BoxCollider>();
         _meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
-        busStateManager = playableCharacter.GetComponent<BusStateManager>();
         CreatePickups();
-        
-        
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == playerCollider && _playerController.MoveSpeed <= _stopSpeed && !_playerController._bIsAtStation)
+        if (other == _playerCollider && _playerController.MoveSpeed <= _stopSpeed && !_playerController._bIsAtStation)
         {
             //Stop the bus's forward auto-drive and disable controls
-            //bIsAtStation is set to public
             _playerController._bIsAtStation = true;
             _meshRenderer.material = _stoppedMat;
-            CheckDropOffs += busStateManager.ReduceStopCount;
+            CheckDropOffs += _busStateManager.ReduceStopCount;
             CheckDropOffs();
-            CreateDropOffs(ref busStateManager.PassengersDropOff);
-            //play boarding animation
+            CreateDropOffs(ref _busStateManager.PassengersDropOff);
             Invoke("SendPassengersToBus", timeStopped / 2);
-            //apply driving modifiers
-            //prompt player to signal they are ready
-            //Invoke("ResumeDriving", timeStopped);
-            //resume auto-driving and gameplay
+            
         }
     }
 
     private void ResumeDriving()
     {
-        CheckDropOffs -= busStateManager.ReduceStopCount;
+        CheckDropOffs -= _busStateManager.ReduceStopCount;
         _playerController._bIsAtStation = false;
         _meshRenderer.material = _mainMat;
         Invoke("CreatePickups", 2f);
     }
     void CreatePickups()
     {
-        Debug.Log("Create Pickups Called");
         foreach(var Passenger in _garbagePassengers)
         {
             Passenger.GetComponent<BotScript>().CallDestroy();
         }
         _garbagePassengers.Clear();
-        int temp = Random.Range(1, 4);
+        int temp = Random.Range(1, 3);
         for (int i = 0; i < temp; ++i)
         {
-            _passengers.Add(CreatePassenger(PossiblePassengers[Random.Range(0, PossiblePassengers.Count)]));
+            float PassChance = Random.Range(0f, 10f);
+            PassengerData Choice = PossiblePassengers[0]; //Defaulting
+            switch(PassChance)
+            {
+                case < 4f:
+                    Choice = PossiblePassengers[0];
+                    break;
+                case < 5f:
+                    Choice = PossiblePassengers[1];
+                    break;
+                case < 6f:
+                    Choice = PossiblePassengers[2];
+                    break;
+                case < 7f:
+                    Choice = PossiblePassengers[3];
+                    break;
+                case < 8f:
+                    Choice = PossiblePassengers[4];
+                    break;
+                case < 9f:
+                    Choice = PossiblePassengers[5];
+                    break;
+                case < 10f:
+                    Choice = PossiblePassengers[6];
+                    break;
+                default:
+                    Choice = PossiblePassengers[3];
+                    break;
+
+            }
+            GameObject NewPassenger = CreatePassenger(Choice);
+            NewPassenger.transform.localPosition = new Vector3(i * 1f, 0f, 0.2f);
+            _passengers.Add(NewPassenger);
         }
     }
 
     void CreateDropOffs(ref List<BotScript> OutDropOffPassengers)
     {
+        int i = 0;
         foreach (var Passenger in OutDropOffPassengers)
         {
             GameObject PassengerPF = Passenger.gameObject;
-            PassengerPF.transform.parent = gameObject.transform;
-            float randpos = Random.Range(-5f, +5f);
-            PassengerPF.transform.localPosition = new Vector3(randpos, 0, randpos);
+            PassengerPF.transform.parent = DropoffTransform;
+            PassengerPF.transform.localPosition = new Vector3(i * 1f, 0f, 0.2f);
             PassengerPF.GetComponent<MeshRenderer>().enabled = true;
             _garbagePassengers.Add(PassengerPF);
+            ++i;
         }
         OutDropOffPassengers.Clear();
     }
     GameObject CreatePassenger(PassengerData InData)
     {
-        GameObject Passenger = GameObject.Instantiate(PassengerPreFab, gameObject.transform);
+        GameObject Passenger = GameObject.Instantiate(PassengerPreFab, PickupTransform);
         Passenger.GetComponent<BotScript>().SetBot(InData);
-        float randpos = Random.Range(-5f, +5f);
-        Passenger.transform.localPosition = new Vector3(randpos, 0, randpos);// Delete Later Maybe?
-        /*_passengers.Add(Passenger)*/
         return Passenger;
     }
 
@@ -115,9 +139,16 @@ public class ParkingScript : MonoBehaviour
         
         foreach(var Passenger in _passengers)
         {
-            busStateManager.AddPassenger(Passenger.GetComponent<BotScript>());
-            Passenger.transform.parent = busStateManager.gameObject.transform;
-            Passenger.GetComponent<MeshRenderer>().enabled = false;
+            if(_busStateManager.PassengersOnBoard.Count < _busStateManager.MaxPassengers)
+            {
+                _busStateManager.AddPassenger(Passenger.GetComponent<BotScript>());
+                Passenger.transform.parent = _busStateManager.gameObject.transform;
+                Passenger.GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                Passenger.GetComponent<BotScript>().CallDestroy();
+            }
         }
         _passengers.Clear();
         

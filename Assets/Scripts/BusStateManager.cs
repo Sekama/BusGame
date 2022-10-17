@@ -5,16 +5,18 @@ using UnityEngine;
 public class BusStateManager : MonoBehaviour
 {
     [SerializeField] Player_Controller _pc;
+    public int MaxPassengers;
     //Variable to Store The Passenger INfo
     public List<BotScript> PassengersOnBoard;
     public List<BotScript> PassengersDropOff;
+    //Variable to Hold the Energy Sprite
     private float _accMod;
     private float _brakeMod;
     private float _maxSpeedMod;
-    private float _wobbleMod;
+    private float _turnMod;
+    private bool _bCanDrain;
 
-    //Testing
-    public PassengerData TestData;
+    
 
 
     private void Awake()
@@ -23,16 +25,7 @@ public class BusStateManager : MonoBehaviour
         PassengersDropOff = new List<BotScript>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     //Stamps the Effects on to the PC
     private void SendEffects()
@@ -40,29 +33,51 @@ public class BusStateManager : MonoBehaviour
         _pc.AccMod = _accMod;
         _pc.BrakeMod = _brakeMod;
         _pc.MaxSpeedMod = _maxSpeedMod;
-        _pc.WobbleMod = _wobbleMod;
+        _pc.TurnMod = _turnMod;
+        _pc.bCanDrain = _bCanDrain;
     }
 
     //Common Functions to Collate the Effects of the Passegers
     private void CollateEffects()
     {
-        _accMod = _brakeMod = _maxSpeedMod = _wobbleMod = 0;
+        bool bHasDoc = false;
+        _accMod = _brakeMod = _maxSpeedMod = _turnMod = 0;
+        _bCanDrain = true;
         foreach (var Passenger in PassengersOnBoard)
         {
             switch(Passenger.PasData.PasType)
             {
                 case EPassengerType.Bashful:
-                    _maxSpeedMod += Passenger.PasData.SpeedMod;
+                    _accMod += Passenger.PasData.AccMod;
+                    break;
+                case EPassengerType.Doc:
+                    bHasDoc = true;
                     break;
                 case EPassengerType.Dopey:
-                    _wobbleMod += Passenger.PasData.WobbleMod;
+                    _turnMod += Passenger.PasData.TurnMod;
+                    break;
+                case EPassengerType.Grumpy:
+                    break;
+                case EPassengerType.Happy:
+                    _bCanDrain = false;
                     break;
                 case EPassengerType.Sleepy:
                     _maxSpeedMod += Passenger.PasData.SpeedMod;
                     break;
+                case EPassengerType.Sneezy:
+                    _maxSpeedMod += Passenger.PasData.SpeedMod;
+                    break;
             }
         }
-
+        if(bHasDoc)
+        {
+            _maxSpeedMod = 0;
+            _accMod = 0;
+            _brakeMod = 0;
+            _turnMod = 0;
+            _bCanDrain = true;
+            
+        }
         SendEffects();
     }
     //Reduce StopCounts on Passengers
@@ -91,7 +106,8 @@ public class BusStateManager : MonoBehaviour
             if (Passenger.StopsLeft == 0)
             {
                 PassengersDropOff.Add(Passenger);
-                
+                _pc.Money += Passenger.PasData.Money;
+                Debug.Log(_pc.Money);
             }
         }
         foreach(var Passenger in PassengersDropOff)
@@ -100,11 +116,5 @@ public class BusStateManager : MonoBehaviour
         }
         CollateEffects();
     }
-    ////Remove Passenger
-    //public void RemovePassenger(BotScript InPassenger)
-    //{
-    //    Debug.Log(PassengersOnBoard.Remove(InPassenger));
-    //    CollateEffects();
-    //    return;
-    //}
+    
 }

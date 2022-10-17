@@ -32,7 +32,7 @@ public class BotScript : MonoBehaviour
     public void CallDestroy()
     {
         Invoke("DestroySelf", 2f);
-        Debug.Log("CalledDetroy");
+        
     }
 
     private void DestroySelf()

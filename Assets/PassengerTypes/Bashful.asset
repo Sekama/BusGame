@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   PasType: 0
-  AccMod: 0
+  AccMod: 10
   BrakeMod: 0
-  SpeedMod: 10
-  WobbleMod: 0
+  SpeedMod: 0
+  TurnMod: 0
+  canDrain: 1
+  Money: 10
   NoOfStops: 1
   BotMesh: {fileID: 4300000, guid: 24d651d38842bc54680ab8908011f0f3, type: 3}
   BotMaterial: {fileID: 2100000, guid: 28646867ddcf90a4989276acd313ea43, type: 2}
