@@ -21,5 +21,8 @@ MonoBehaviour:
   canDrain: 1
   Money: 20
   NoOfStops: 1
-  BotMesh: {fileID: 4300000, guid: e2c3330a1c72b6d4bbfcb564ae502537, type: 3}
-  BotMaterial: {fileID: 2100000, guid: 28646867ddcf90a4989276acd313ea43, type: 2}
+  BotImage: {fileID: 1729107189, guid: e9cc11a460428d648bb284e8242fb50f, type: 3}
+  BotMesh: {fileID: 1221480521951414392, guid: 47fb26a2edf7f284896450610bdb6d7d, type: 3}
+  BotMaterial:
+  - {fileID: 2100000, guid: b8ca997822205104fb3116f01c8e326a, type: 2}
+  - {fileID: 2100000, guid: ec46a4103b0f1f84cb38cdb74383f24c, type: 2}

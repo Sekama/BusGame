@@ -51,6 +51,7 @@ public class ParkingScript : MonoBehaviour
         {
             //Stop the bus's forward auto-drive and disable controls
             _playerController._bIsAtStation = true;
+            _playerController.AtStation(true);
             _meshRenderer.material = _stoppedMat;
             CheckDropOffs += _busStateManager.ReduceStopCount;
             CheckDropOffs();
@@ -64,6 +65,7 @@ public class ParkingScript : MonoBehaviour
     {
         CheckDropOffs -= _busStateManager.ReduceStopCount;
         _playerController._bIsAtStation = false;
+        _playerController.AtStation(false);
         _meshRenderer.material = _mainMat;
         Invoke("CreatePickups", 2f);
     }
@@ -151,7 +153,7 @@ public class ParkingScript : MonoBehaviour
             }
         }
         _passengers.Clear();
-        
+
         
         ResumeDriving();
     }

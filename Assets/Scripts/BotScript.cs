@@ -23,9 +23,10 @@ public class BotScript : MonoBehaviour
 
     public void SetBot(PassengerData InData)
     {
+        BotRenderer.materials = new Material[InData.BotMaterial.Length];
         PasData = InData;
         BotMesh.mesh = PasData.BotMesh;
-        BotRenderer.material = InData.BotMaterial;
+        BotRenderer.materials = InData.BotMaterial;
         StopsLeft = PasData.NoOfStops;
     }
 
