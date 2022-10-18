@@ -29,7 +29,11 @@ public class ParkingScript : MonoBehaviour
     private BusStateManager _busStateManager;
     private List<GameObject> _garbagePassengers;
 
-
+    //Bus Route variables
+    public List<GameObject> StopsInRadius;
+    [SerializeField] private float _radius;
+    public bool bIsActive;
+    
     private void Awake()
     {
         _passengers = new List<GameObject>();
@@ -38,27 +42,43 @@ public class ParkingScript : MonoBehaviour
         _playerController = _playableCharacter.GetComponent<Player_Controller>();
         _busStateManager = _playableCharacter.GetComponent<BusStateManager>();
         _playerCollider = _playableCharacter.GetComponent<BoxCollider>();
+        bIsActive = false;
     }
     private void Start()
     {
+        
         _meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         CreatePickups();
     }
-
+    public void GetNearbyStops()
+    {
+        StopsInRadius = new List<GameObject>();
+        foreach (var Stop in GameObject.FindGameObjectsWithTag("BusStop"))
+        {
+            if (Vector3.Distance(gameObject.transform.position, Stop.transform.position) <= _radius && Stop != this.gameObject)
+            {
+                StopsInRadius.Add(Stop);
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other == _playerCollider && _playerController.MoveSpeed <= _stopSpeed && !_playerController._bIsAtStation)
+        if(bIsActive)
         {
-            //Stop the bus's forward auto-drive and disable controls
-            _playerController._bIsAtStation = true;
-            _playerController.AtStation(true);
-            _meshRenderer.material = _stoppedMat;
-            CheckDropOffs += _busStateManager.ReduceStopCount;
-            CheckDropOffs();
-            CreateDropOffs(ref _busStateManager.PassengersDropOff);
-            Invoke("SendPassengersToBus", timeStopped / 2);
-            
+            if (other == _playerCollider && _playerController.MoveSpeed <= _stopSpeed && !_playerController._bIsAtStation)
+            {
+                //Stop the bus's forward auto-drive and disable controls
+                _playerController._bIsAtStation = true;
+                _playerController.AtStation(true);
+                _meshRenderer.material = _stoppedMat;
+                CheckDropOffs += _busStateManager.ReduceStopCount;
+                CheckDropOffs();
+                CreateDropOffs(ref _busStateManager.PassengersDropOff);
+                Invoke("SendPassengersToBus", timeStopped / 2);
+
+            }
         }
+        
     }
 
     private void ResumeDriving()

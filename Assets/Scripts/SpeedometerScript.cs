@@ -14,6 +14,10 @@ public class SpeedometerScript : MonoBehaviour
     {
         _playableCharacter = GameObject.FindGameObjectWithTag("Player");
         _playerController = _playableCharacter.GetComponent<Player_Controller>();
+        if(!_playerController)
+        {
+            Debug.Log(gameObject.tag);
+        }
     }
   
 
