@@ -16,7 +16,7 @@ public class Player_Controller : MonoBehaviour
     public float MoveSpeed { get; private set; }
     private float _turnSpeed = 120;
     private float _max_speed = 30;
-    private float _brakeSpeed = 0.1f;
+    private float _brakeSpeed = 1f;
     private float _accSpeed = 0.25f;
     private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
