@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
   m_Name: Grain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   colored:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 0.198
+    value: 0.136
   size:
     overrideState: 0
     value: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 3.83
+    value: 1.89
   threshold:
     overrideState: 0
     value: 1
@@ -103,6 +103,50 @@ MonoBehaviour:
   kernelSize:
     overrideState: 1
     value: 2
+--- !u!114 &-1309707789404581353
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  mode:
+    overrideState: 0
+    value: 0
+  color:
+    overrideState: 0
+    value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    overrideState: 0
+    value: {x: 0.5, y: 0.5}
+  intensity:
+    overrideState: 1
+    value: 0.25
+  smoothness:
+    overrideState: 0
+    value: 0.2
+  roundness:
+    overrideState: 0
+    value: 1
+  rounded:
+    overrideState: 0
+    value: 0
+  mask:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  opacity:
+    overrideState: 0
+    value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +166,7 @@ MonoBehaviour:
   - {fileID: -3974417627044710843}
   - {fileID: 6976403175211041474}
   - {fileID: 227587967008511079}
+  - {fileID: -1309707789404581353}
 --- !u!114 &227587967008511079
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -169,7 +214,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.32
+    value: 0.25
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -214,15 +259,15 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   gradingMode:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
   externalLut:
     overrideState: 0
     value: {fileID: 0}
     defaultState: 1
   tonemapper:
     overrideState: 1
-    value: 0
+    value: 1
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -242,11 +287,11 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   ldrLut:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 00ee32d09d1966f4985c39b8d800cacb, type: 3}
     defaultState: 4
   ldrLutContribution:
-    overrideState: 0
+    overrideState: 1
     value: 1
   temperature:
     overrideState: 0
@@ -271,7 +316,7 @@ MonoBehaviour:
     value: 0.99
   contrast:
     overrideState: 1
-    value: 14
+    value: 46
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
