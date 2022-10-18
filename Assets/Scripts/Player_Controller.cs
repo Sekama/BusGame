@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour
 {
+    public delegate void FAtStation(bool bIsAtStation);
+    public FAtStation AtStation;
     //References For Movement
     public InputMaster playerInputMaster;
     private Rigidbody _rb;
