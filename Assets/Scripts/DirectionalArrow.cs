@@ -5,32 +5,27 @@ using UnityEngine;
 
 public class DirectionalArrow : MonoBehaviour
 {
+    public delegate void FChangeStation();
+    public FChangeStation ChangeActiveStation;
+    public GameObject DirectionalArrowComponent;
+    public GameObject Destination;
 
-    public GameObject directionalArrow;
-    
-    public GameObject FindClosestBusStop()
+    //Supreme Leader I am Very Sorry For Deleting your Function. It Had to be done for the benefit of your empire. 
+    private void Awake()
     {
-        GameObject[] stops;
-        stops = GameObject.FindGameObjectsWithTag("BusStop");
-        GameObject closestStop = null;
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-
-        foreach (GameObject stop in stops)
-        {
-            Vector3 diff = stop.transform.position - position;
-            float currentDistance = diff.sqrMagnitude;
-            if (currentDistance < distance)
-            {
-                closestStop = stop;
-                distance = currentDistance;
-            }
-        }
-        return closestStop;
+        GetComponent<Player_Controller>().AtStation += ChangeStation;
     }
 
-    private void Update()
+    public void ChangeStation(bool bIsArriving)
     {
-        directionalArrow.transform.LookAt(FindClosestBusStop().transform);
+        if (!bIsArriving)
+        {
+            Debug.Log("Changin Station");
+            ChangeActiveStation();
+        }
+    }
+    private void FixedUpdate()
+    {
+        DirectionalArrowComponent.transform.LookAt(Destination.transform);
     }
 }

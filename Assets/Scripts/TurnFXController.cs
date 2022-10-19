@@ -8,9 +8,10 @@ using UnityEngine.InputSystem;
 public class TurnFXController : MonoBehaviour
 {
     //References For Animators
-    [SerializeField] private Animator []  animatorLeft;  
-    [SerializeField] private Animator []  animatorRight;  
-    [SerializeField] private Animator []  animatorMotor;  
+    [SerializeField] private Animator []  animatorLeft, animatorRight, animatorMotor;  
+   
+    [SerializeField] private Animator []  animatorLighLeft, animatorLightRight, animatorLightMotor;  
+ 
     
    
     //References For Movement
@@ -44,6 +45,7 @@ public class TurnFXController : MonoBehaviour
             Debug.Log("left pressed");
             _bIsLeftPressed = true;
 
+            //FX
             foreach (var animatorMotorR in animatorRight)
             {
                 animatorMotorR.SetBool("isLeftPressed", true);
@@ -52,6 +54,16 @@ public class TurnFXController : MonoBehaviour
             {
                 animatorMotorL.SetBool("isRightPressed", true);
             }
+            
+            //Lights
+            foreach (var animatorLightMotorR in animatorLightRight)
+            {
+                animatorLightMotorR.SetBool("isLeftPressed", true);
+            }
+            foreach (var animatorLightMotorL in animatorLighLeft)
+            {
+                animatorLightMotorL.SetBool("isRightPressed", true);
+            }
         }
         if(InContext.canceled)
         {
@@ -59,6 +71,7 @@ public class TurnFXController : MonoBehaviour
 
             _bIsLeftPressed = false;
 
+            //FX
             foreach (var animatorMotorR in animatorRight)
             {
                 animatorMotorR.SetBool("isLeftPressed", false);
@@ -66,6 +79,16 @@ public class TurnFXController : MonoBehaviour
             foreach (var animatorMotorL in animatorLeft)
             {
                 animatorMotorL.SetBool("isRightPressed", false);
+            }
+            
+            //Lights
+            foreach (var animatorLightMotorR in animatorLightRight)
+            {
+                animatorLightMotorR.SetBool("isLeftPressed", false);
+            }
+            foreach (var animatorLightMotorL in animatorLighLeft)
+            {
+                animatorLightMotorL.SetBool("isRightPressed", false);
             }
         }
     }
@@ -78,6 +101,7 @@ public class TurnFXController : MonoBehaviour
 
             _bIsRightPressed = true;
 
+            //FX
             foreach (var animatorMotorR in animatorRight)
             {
                 animatorMotorR.SetBool("isRightPressed", true);
@@ -86,13 +110,26 @@ public class TurnFXController : MonoBehaviour
             {
                 animatorMotorL.SetBool("isLeftPressed", true);
             }
+            
+            //Lights
+            foreach (var animatorLightMotorR in animatorLightRight)
+            {
+                animatorLightMotorR.SetBool("isRightPressed", true);
+            }
+            foreach (var animatorLightMotorL in animatorLighLeft)
+            {
+                animatorLightMotorL.SetBool("isLeftPressed", true);
+            }
         }
+        
+        
         if(InContext.canceled)
         {
             Debug.Log("right released");
 
             _bIsRightPressed = false;
 
+            //FX
             foreach (var animatorMotorR in animatorRight)
             {
                 animatorMotorR.SetBool("isRightPressed", false);
@@ -100,6 +137,16 @@ public class TurnFXController : MonoBehaviour
             foreach (var animatorMotorL in animatorLeft)
             {
                 animatorMotorL.SetBool("isLeftPressed", false);
+            }
+            
+            //Lights
+            foreach (var animatorLightMotorR in animatorLightRight)
+            {
+                animatorLightMotorR.SetBool("isRightPressed", false);
+            }
+            foreach (var animatorLightMotorL in animatorLighLeft)
+            {
+                animatorLightMotorL.SetBool("isLeftPressed", false);
             }
         }
     }
@@ -114,6 +161,10 @@ public class TurnFXController : MonoBehaviour
             {
                 animatorMotor.SetBool("isBraking", true);
             }
+            foreach (var animatorLightMotor in animatorLightMotor)
+            {
+                animatorLightMotor.SetBool("isBraking", true);
+            }
             _bIsBraking = true;
         }
         else
@@ -124,6 +175,10 @@ public class TurnFXController : MonoBehaviour
             foreach (var animatorMotor in animatorMotor)
             {
                 animatorMotor.SetBool("isBraking", false);
+            }
+            foreach (var animatorLightMotor in animatorLightMotor)
+            {
+                animatorLightMotor.SetBool("isBraking", false);
             }
         }
     }
