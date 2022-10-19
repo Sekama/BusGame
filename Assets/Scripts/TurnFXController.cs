@@ -2,73 +2,132 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class TurnFXController : MonoBehaviour
 {
+    //References For Animators
     [SerializeField] private Animator []  animatorLeft;  
     [SerializeField] private Animator []  animatorRight;  
     [SerializeField] private Animator []  animatorMotor;  
+    
+   
+    //References For Movement
+    public InputMaster playerInputMaster;
+    
+    //Variables for Movement
+    private bool _bIsBraking = false;
+    private bool _bIsLeftPressed = false;
+    private bool _bIsRightPressed = false;
 
- 
-    private void Update()
+    private void Awake()
     {
+        //Binding the Player Input System to the Controller
+        playerInputMaster = new InputMaster();
+        playerInputMaster.Player_XBox.Enable();
+        playerInputMaster.Player_XBox.TurnLeft.started += TurnLeft;
+        playerInputMaster.Player_XBox.TurnLeft.canceled += TurnLeft;
+        playerInputMaster.Player_XBox.TurnRight.started += TurnRight;
+        playerInputMaster.Player_XBox.TurnRight.canceled += TurnRight;    
+    }
 
-        foreach (var animatorMotor in animatorMotor)
+    private void FixedUpdate()
+    {
+        Brake();
+    }
+    
+    private void TurnLeft(InputAction.CallbackContext InContext)
+    {
+        if(InContext.started)
         {
-            //Braking
-            if (Input.GetKeyDown(KeyCode.Space))
+            Debug.Log("left pressed");
+            _bIsLeftPressed = true;
+
+            foreach (var animatorMotorR in animatorRight)
             {
-                animatorMotor.SetBool("isBraking", true);
+                animatorMotorR.SetBool("isLeftPressed", true);
             }
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                animatorMotor.SetBool("isBraking", false);
-            }
-        }
-        foreach (var animatorMotorL in animatorLeft)
-        {
-            //TurningLeft
-            if (Input.GetKeyDown(KeyCode.A))
+            foreach (var animatorMotorL in animatorLeft)
             {
                 animatorMotorL.SetBool("isRightPressed", true);
             }
-            if (Input.GetKeyUp(KeyCode.A))
+        }
+        if(InContext.canceled)
+        {
+            Debug.Log("left released");
+
+            _bIsLeftPressed = false;
+
+            foreach (var animatorMotorR in animatorRight)
+            {
+                animatorMotorR.SetBool("isLeftPressed", false);
+            }
+            foreach (var animatorMotorL in animatorLeft)
             {
                 animatorMotorL.SetBool("isRightPressed", false);
             }
-            
-            //TurningRight
-            if (Input.GetKeyDown(KeyCode.D))
+        }
+    }
+
+    private void TurnRight(InputAction.CallbackContext InContext)
+    {
+        if(InContext.started)
+        {
+            Debug.Log("right pressed");
+
+            _bIsRightPressed = true;
+
+            foreach (var animatorMotorR in animatorRight)
+            {
+                animatorMotorR.SetBool("isRightPressed", true);
+            }
+            foreach (var animatorMotorL in animatorLeft)
             {
                 animatorMotorL.SetBool("isLeftPressed", true);
             }
-            if (Input.GetKeyUp(KeyCode.D))
+        }
+        if(InContext.canceled)
+        {
+            Debug.Log("right released");
+
+            _bIsRightPressed = false;
+
+            foreach (var animatorMotorR in animatorRight)
+            {
+                animatorMotorR.SetBool("isRightPressed", false);
+            }
+            foreach (var animatorMotorL in animatorLeft)
             {
                 animatorMotorL.SetBool("isLeftPressed", false);
             }
         }
-        
-        foreach (var animatorMotorR in animatorRight)
+    }
+
+    private void Brake()
+    {
+        if(_bIsLeftPressed && _bIsRightPressed)
         {
-            //TurningLeft
-            if (Input.GetKeyDown(KeyCode.A))
+            Debug.Log("brake pressed");
+
+            foreach (var animatorMotor in animatorMotor)
             {
-                animatorMotorR.SetBool("isLeftPressed", true);
+                animatorMotor.SetBool("isBraking", true);
             }
-            if (Input.GetKeyUp(KeyCode.A))
+            _bIsBraking = true;
+        }
+        else
+        {
+            Debug.Log("brake released");
+
+            _bIsBraking = false;
+            foreach (var animatorMotor in animatorMotor)
             {
-                animatorMotorR.SetBool("isLeftPressed", false);
-            }
-            
-            //TurningRight
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                animatorMotorR.SetBool("isRightPressed", true);
-            }
-            if (Input.GetKeyUp(KeyCode.D))
-            {
-                animatorMotorR.SetBool("isRightPressed", false);
+                animatorMotor.SetBool("isBraking", false);
             }
         }
     }
+    
+    
 }
+
