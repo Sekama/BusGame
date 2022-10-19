@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091fd6582ceeeb441a1bf76a5b3ea428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCollider: {fileID: 0}
   _stopSpeed: 40
   _mainMat: {fileID: 2100000, guid: aa388c0010e12a342976a5f96b652608, type: 2}
   _stoppedMat: {fileID: 2100000, guid: 6bd79ee9126b51d4b925dbeeb6f3a4e7, type: 2}
@@ -245,6 +244,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7666afe3eea84fc4ebba5d40b7f67fe0, type: 2}
   - {fileID: 11400000, guid: b2e0a5c7b0cf76c45bf3b61d54f817ea, type: 2}
   PassengerPreFab: {fileID: 4401938513091211197, guid: 84a1b440ca2b7734fb416e098fb9815e, type: 3}
+  StopsInRadius: []
+  _radius: 500
+  bIsActive: 0
 --- !u!54 &6641430799501862009
 Rigidbody:
   m_ObjectHideFlags: 0
