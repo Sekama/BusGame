@@ -7,19 +7,20 @@ using TMPro;
 public class SpeedometerScript : MonoBehaviour
 {
     private GameObject _playableCharacter;
-    private Player_Controller _playerController;
+    private Rigidbody _playerRb;
     //public Text _text;
     public TMP_Text _textMeshPro;
     private void Awake()
     {
         _playableCharacter = GameObject.FindGameObjectWithTag("Player");
-        _playerController = _playableCharacter.GetComponent<Player_Controller>();
+        _playerRb = _playableCharacter.GetComponent<Rigidbody>();
     }
   
 
     
     void Update()
     {
-        _textMeshPro.SetText(_playerController.MoveSpeed.ToString("N0")); 
+        
+        _textMeshPro.SetText(_playerRb.velocity.magnitude.ToString("N0")); 
     }
 }
