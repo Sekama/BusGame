@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3155156555799129802}
+  - component: {fileID: 4807425404249494791}
+  - component: {fileID: 3024695338614210015}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -32,6 +34,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4807425404249494791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951493759415271944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7c374b59fc02e40a26428c5da338b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boostAmt: 15
+  _spawnDelay: 10
+  _spawnDelayDelta: 5
+  _pickupLogic: {fileID: 7920095893567758189}
+--- !u!135 &3024695338614210015
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951493759415271944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 1.02, z: 0}
 --- !u!1001 &7001052953166471740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,7 +84,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61ff76d7264c69845a25e51f8e3459b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.62654
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61ff76d7264c69845a25e51f8e3459b0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -100,5 +131,10 @@ PrefabInstance:
 --- !u!4 &7395480049963664855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61ff76d7264c69845a25e51f8e3459b0, type: 3}
+  m_PrefabInstance: {fileID: 7001052953166471740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7920095893567758189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 61ff76d7264c69845a25e51f8e3459b0, type: 3}
   m_PrefabInstance: {fileID: 7001052953166471740}
   m_PrefabAsset: {fileID: 0}
