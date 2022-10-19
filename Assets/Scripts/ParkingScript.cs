@@ -29,6 +29,10 @@ public class ParkingScript : MonoBehaviour
     private BusStateManager _busStateManager;
     private List<GameObject> _garbagePassengers;
 
+    //Bus Route variables
+    public List<GameObject> StopsInRadius;
+    [SerializeField] private float _radius;
+    public bool bIsActive;
 
     private void Awake()
     {
@@ -38,27 +42,43 @@ public class ParkingScript : MonoBehaviour
         _playerController = _playableCharacter.GetComponent<Player_Controller>();
         _busStateManager = _playableCharacter.GetComponent<BusStateManager>();
         _playerCollider = _playableCharacter.GetComponent<BoxCollider>();
+        bIsActive = false;
     }
     private void Start()
     {
+
         _meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         CreatePickups();
     }
-
+    public void GetNearbyStops()
+    {
+        StopsInRadius = new List<GameObject>();
+        foreach (var Stop in GameObject.FindGameObjectsWithTag("BusStop"))
+        {
+            if (Vector3.Distance(gameObject.transform.position, Stop.transform.position) <= _radius && Stop != this.gameObject)
+            {
+                StopsInRadius.Add(Stop);
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other == _playerCollider && _playerController.MoveSpeed <= _stopSpeed && !_playerController._bIsAtStation)
+        if (bIsActive)
         {
-            //Stop the bus's forward auto-drive and disable controls
-            _playerController._bIsAtStation = true;
-            _playerController.AtStation(true);
-            _meshRenderer.material = _stoppedMat;
-            CheckDropOffs += _busStateManager.ReduceStopCount;
-            CheckDropOffs();
-            CreateDropOffs(ref _busStateManager.PassengersDropOff);
-            Invoke("SendPassengersToBus", timeStopped / 2);
-            
+            if (other == _playerCollider && _playerController.MoveSpeed <= _stopSpeed && !_playerController._bIsAtStation)
+            {
+                //Stop the bus's forward auto-drive and disable controls
+                _playerController._bIsAtStation = true;
+                _playerController.AtStation(true);
+                _meshRenderer.material = _stoppedMat;
+                CheckDropOffs += _busStateManager.ReduceStopCount;
+                CheckDropOffs();
+                CreateDropOffs(ref _busStateManager.PassengersDropOff);
+                Invoke("SendPassengersToBus", timeStopped / 2);
+
+            }
         }
+
     }
 
     private void ResumeDriving()
@@ -71,7 +91,7 @@ public class ParkingScript : MonoBehaviour
     }
     void CreatePickups()
     {
-        foreach(var Passenger in _garbagePassengers)
+        foreach (var Passenger in _garbagePassengers)
         {
             Passenger.GetComponent<BotScript>().CallDestroy();
         }
@@ -81,7 +101,7 @@ public class ParkingScript : MonoBehaviour
         {
             float PassChance = Random.Range(0f, 10f);
             PassengerData Choice = PossiblePassengers[0]; //Defaulting
-            switch(PassChance)
+            switch (PassChance)
             {
                 case < 4f:
                     Choice = PossiblePassengers[0];
@@ -138,10 +158,10 @@ public class ParkingScript : MonoBehaviour
 
     void SendPassengersToBus()
     {
-        
-        foreach(var Passenger in _passengers)
+
+        foreach (var Passenger in _passengers)
         {
-            if(_busStateManager.PassengersOnBoard.Count < _busStateManager.MaxPassengers)
+            if (_busStateManager.PassengersOnBoard.Count < _busStateManager.MaxPassengers)
             {
                 _busStateManager.AddPassenger(Passenger.GetComponent<BotScript>());
                 Passenger.transform.parent = _busStateManager.gameObject.transform;
@@ -154,10 +174,10 @@ public class ParkingScript : MonoBehaviour
         }
         _passengers.Clear();
 
-        
+
         ResumeDriving();
     }
-    
 
-    
+
+
 }
