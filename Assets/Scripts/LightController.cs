@@ -5,21 +5,20 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-
-    [SerializeField] private GameObject[] busLight;
+    [SerializeField] private Animator []  busLight;  
 
     void Update()
     {
-
-        // on braking pressed
-        // if (Input.anyKeyDown)  
+        foreach (var busLightBulb in busLight)
         {
-            Debug.Log("color");
-            
-            foreach (var busLightColors in busLight)
-            {        
-                busLightColors.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
-                busLightColors.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.red);;
+            //Braking
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                busLightBulb.SetBool("isBraking", true);
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                busLightBulb.SetBool("isBraking", false);
             }
         }
     }
