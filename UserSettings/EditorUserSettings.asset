@@ -6,34 +6,34 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
-      value: 5004065f5c545f5a5457087414255a4414154f7a757d74672f284466e3e13668
-      flags: 0
-    RecentlyUsedSceneGuid-1:
-      value: 5a070704565651020e0c597549260944444e40287f7a20352b7a1865e7e5623e
-      flags: 0
-    RecentlyUsedSceneGuid-2:
-      value: 0609045153060a5f5e5c097342250c4412161b78797e23627c7a4935bbb2376c
-      flags: 0
-    RecentlyUsedSceneGuid-3:
-      value: 5605045655010f590e5b597b40260744174f1d7a7a2b77662b7b1e62b4e2316a
-      flags: 0
-    RecentlyUsedSceneGuid-4:
       value: 5608505501020f0b555b557213755c4410154e7f787823662f2d4937b0b4613b
       flags: 0
-    RecentlyUsedSceneGuid-5:
+    RecentlyUsedSceneGuid-1:
+      value: 51500c5404530c5e0e5d087311705b44144e487c787a2033292c1837b4b6646c
+      flags: 0
+    RecentlyUsedSceneGuid-2:
       value: 0508065e01040c5d5d0c5f7a4074594417164c7d7a7f7536797d1f37b3b66368
       flags: 0
-    RecentlyUsedSceneGuid-6:
+    RecentlyUsedSceneGuid-3:
       value: 5200525301000d090f5b5c75447a0b44424f4e7d29707f337e784f61b0e66068
       flags: 0
-    RecentlyUsedSceneGuid-7:
-      value: 5b5403045707580308585d73487a0c44474e1d2b7d2a22622c7b4e62b2b1656d
-      flags: 0
-    RecentlyUsedSceneGuid-8:
+    RecentlyUsedSceneGuid-4:
       value: 5608525554045b5d595a5d2141200f4444151a79797d75617c2a4560b6b7623b
       flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 0157045706015d025c0c5e26417009444f151d7d292c22607b711e65e1b93069
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 5605045655010f590e5b597b40260744174f1d7a7a2b77662b7b1e62b4e2316a
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 0706015f06070d0c545d087115720e44134f4d78742927332871196ab3e2353c
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 5b5403045707580308585d73487a0c44474e1d2b7d2a22622c7b4e62b2b1656d
+      flags: 0
     RecentlyUsedSceneGuid-9:
-      value: 51500c5404530c5e0e5d087311705b44144e487c787a2033292c1837b4b6646c
+      value: 0609045153060a5f5e5c097342250c4412161b78797e23627c7a4935bbb2376c
       flags: 0
     vcPerforcePassword:
       value: 375047121c74194b010b
