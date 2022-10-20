@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7003743526269867268}
-  - component: {fileID: 5304645626002912327}
   m_Layer: 0
   m_Name: DoctorRobot
   m_TagString: Untagged
@@ -33,26 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5304645626002912327
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220305786513651008}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a02a5c01efd080c4483cd671bf2ccea1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7178238422857441651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,11 +86,11 @@ PrefabInstance:
     - target: {fileID: -8544810502793260820, guid: 47fb26a2edf7f284896450610bdb6d7d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0f36cddc54ddaf34fb1769e3797ddaa2, type: 2}
+      objectReference: {fileID: 2100000, guid: dd7498905fbf1124e9ac24a4cfdd843c, type: 2}
     - target: {fileID: -8544810502793260820, guid: 47fb26a2edf7f284896450610bdb6d7d, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 2dec3b9a54282be4189b4277cf4d6edb, type: 2}
+      objectReference: {fileID: 2100000, guid: 0f36cddc54ddaf34fb1769e3797ddaa2, type: 2}
     - target: {fileID: -8544810502793260820, guid: 47fb26a2edf7f284896450610bdb6d7d, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
