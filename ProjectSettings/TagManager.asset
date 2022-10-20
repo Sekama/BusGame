@@ -7,6 +7,7 @@ TagManager:
   - BusStop
   - Road
   - FxTemporaire
+  - Buildings
   layers:
   - Default
   - TransparentFX
