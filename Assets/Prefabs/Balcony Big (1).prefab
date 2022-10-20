@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1359278159448957332}
+  - component: {fileID: 6552521316021338267}
   m_Layer: 0
   m_Name: Balcony Big (1)
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6552521316021338267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255866542294018978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.095669, y: 7.15998, z: 8.887981}
+  m_Center: {x: 0.8187313, y: -0.50683355, z: 7.257902}
 --- !u!1001 &645424316516576044
 PrefabInstance:
   m_ObjectHideFlags: 0
