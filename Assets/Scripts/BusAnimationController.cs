@@ -13,7 +13,6 @@ public class BusAnimationController : MonoBehaviour
     public InputMaster playerInputMaster;
     
     //Variables for Movement
-    private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
     private bool _bIsRightPressed = false;
 
@@ -68,12 +67,10 @@ public class BusAnimationController : MonoBehaviour
         if(_bIsLeftPressed && _bIsRightPressed)
         {
             animatorBus.SetBool("isBraking", true);
-            _bIsBraking = true;
 
         }
         else
         {
-            _bIsBraking = false;
             animatorBus.SetBool("isBraking", false);
         }
     }

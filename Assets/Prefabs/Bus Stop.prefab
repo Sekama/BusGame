@@ -181,11 +181,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 61a67cb69be92574a9459cdad77da7ee, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cbd44edf6b1b9784e9a7d878e96bc8c8, type: 2}
+      objectReference: {fileID: 2100000, guid: 64804ae71d4077d45a50eb585dcfb33a, type: 2}
     - target: {fileID: -7511558181221131132, guid: 61a67cb69be92574a9459cdad77da7ee, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 62912967e0bd6cd4aadb5771da9545eb, type: 2}
+      objectReference: {fileID: 2100000, guid: 7bd50b11fdeff054080bffb2a67706fc, type: 2}
     - target: {fileID: 919132149155446097, guid: 61a67cb69be92574a9459cdad77da7ee, type: 3}
       propertyPath: m_Name
       value: SM_add_board_standing

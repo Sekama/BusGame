@@ -13,7 +13,6 @@ public class LightController : MonoBehaviour
     public InputMaster playerInputMaster;
     
     //Variables for Movement
-    private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
     private bool _bIsRightPressed = false;
 
@@ -73,7 +72,6 @@ public class LightController : MonoBehaviour
     {
         if(_bIsLeftPressed && _bIsRightPressed)
         {
-            _bIsBraking = true;
             foreach (var busLightBulb in busLight)
             {
                 busLightBulb.SetBool("isBraking", true);
@@ -82,7 +80,6 @@ public class LightController : MonoBehaviour
         }
         else
         {
-            _bIsBraking = false;
             foreach (var busLightBulb in busLight)
             {
                 busLightBulb.SetBool("isBraking", false);

@@ -18,7 +18,6 @@ public class TurnFXController : MonoBehaviour
     public InputMaster playerInputMaster;
     
     //Variables for Movement
-    private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
     private bool _bIsRightPressed = false;
 
@@ -42,7 +41,6 @@ public class TurnFXController : MonoBehaviour
     {
         if(InContext.started)
         {
-            Debug.Log("left pressed");
             _bIsLeftPressed = true;
 
             //FX
@@ -67,8 +65,6 @@ public class TurnFXController : MonoBehaviour
         }
         if(InContext.canceled)
         {
-            Debug.Log("left released");
-
             _bIsLeftPressed = false;
 
             //FX
@@ -97,8 +93,6 @@ public class TurnFXController : MonoBehaviour
     {
         if(InContext.started)
         {
-            Debug.Log("right pressed");
-
             _bIsRightPressed = true;
 
             //FX
@@ -125,8 +119,6 @@ public class TurnFXController : MonoBehaviour
         
         if(InContext.canceled)
         {
-            Debug.Log("right released");
-
             _bIsRightPressed = false;
 
             //FX
@@ -155,8 +147,6 @@ public class TurnFXController : MonoBehaviour
     {
         if(_bIsLeftPressed && _bIsRightPressed)
         {
-            Debug.Log("brake pressed");
-
             foreach (var animatorMotor in animatorMotor)
             {
                 animatorMotor.SetBool("isBraking", true);
@@ -165,13 +155,9 @@ public class TurnFXController : MonoBehaviour
             {
                 animatorLightMotor.SetBool("isBraking", true);
             }
-            _bIsBraking = true;
         }
         else
         {
-            Debug.Log("brake released");
-
-            _bIsBraking = false;
             foreach (var animatorMotor in animatorMotor)
             {
                 animatorMotor.SetBool("isBraking", false);
