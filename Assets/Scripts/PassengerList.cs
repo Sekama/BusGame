@@ -17,11 +17,13 @@ public class PassengerList : MonoBehaviour
     {
         foreach(var Img in PassengerImages)
         {
-            Img.sprite = null;
+            Img.color = new Color(0,0,0,0);
         }
         for(int i = 0; i < _bsm.PassengersOnBoard.Count; ++i)
         {
             PassengerImages[i].sprite = _bsm.PassengersOnBoard[i].PasData.BotImage;
+            PassengerImages[i].color = new Color(1, 1, 1, 1);
         }
+        
     }
 }
