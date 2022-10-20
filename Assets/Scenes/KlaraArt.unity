@@ -1249,11 +1249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4191161631316564594, guid: 01b926fc963c1574495ad1012750d2de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4191161631316564594, guid: 01b926fc963c1574495ad1012750d2de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.94
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01b926fc963c1574495ad1012750d2de, type: 3}
