@@ -95,6 +95,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: cdbbf0c27477e114f9cbcd9f080c9bf1, type: 2}
+    - target: {fileID: -5331606329031675326, guid: afc31c002467b2b4baae61640719fc24, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19058d7e12c6573488de57681944206a, type: 2}
+    - target: {fileID: -5331606329031675326, guid: afc31c002467b2b4baae61640719fc24, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: cdbbf0c27477e114f9cbcd9f080c9bf1, type: 2}
+    - target: {fileID: -5331606329031675326, guid: afc31c002467b2b4baae61640719fc24, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f36cddc54ddaf34fb1769e3797ddaa2, type: 2}
+    - target: {fileID: -4608081088687148556, guid: afc31c002467b2b4baae61640719fc24, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4608081088687148556, guid: afc31c002467b2b4baae61640719fc24, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: afc31c002467b2b4baae61640719fc24, type: 3}
       propertyPath: m_Name
       value: SM_AccelerationRobot
