@@ -14,10 +14,10 @@ public class Player_Controller : MonoBehaviour
     private Rigidbody _rb;
     //Variables for Movement
     public float MoveSpeed { get; private set; }
-    private float _turnSpeed = 120;
-    private float _max_speed = 30;
-    private float _brakeSpeed = 1f;
-    private float _accSpeed = 0.25f;
+    [SerializeField] private float _turnSpeed = 120;
+    [SerializeField] private float _max_speed = 45;
+    [SerializeField] private float _brakeSpeed = 0.5f;
+    [SerializeField] private float _accSpeed = 0.15f;
     private bool _bIsBraking = false;
     private bool _bIsLeftPressed = false;
     private bool _bIsRightPressed = false;

@@ -16,7 +16,7 @@ MonoBehaviour:
   PasType: 6
   AccMod: 0
   BrakeMod: 0
-  SpeedMod: 10
+  SpeedMod: 15
   TurnMod: 0
   canDrain: 0
   Money: 10

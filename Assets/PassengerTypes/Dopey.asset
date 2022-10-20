@@ -17,7 +17,7 @@ MonoBehaviour:
   AccMod: 0
   BrakeMod: 0
   SpeedMod: 0
-  TurnMod: 10
+  TurnMod: 25
   canDrain: 1
   Money: 25
   NoOfStops: 3
