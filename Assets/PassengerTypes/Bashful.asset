@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   PasType: 0
-  AccMod: 10
+  AccMod: 0.15
   BrakeMod: 0
   SpeedMod: 0
   TurnMod: 0
