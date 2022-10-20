@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7199510036942209548}
+  - component: {fileID: 6618967958916498942}
   m_Layer: 0
   m_Name: SpeedRobot
   m_TagString: Untagged
@@ -32,6 +33,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6618967958916498942
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628229518177434596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a608c0e163f04c4192749585cd3098c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1378047804884808293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,7 +115,7 @@ PrefabInstance:
     - target: {fileID: -8646975101404418394, guid: 37dea7a6c8559d242a7054d8a19de137, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 3479cc33ff6fcce46808c2c405b944bd, type: 2}
+      objectReference: {fileID: 2100000, guid: d70e3d8bca2aa67448ee9fa2b963cc43, type: 2}
     - target: {fileID: -7511558181221131132, guid: 37dea7a6c8559d242a7054d8a19de137, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
