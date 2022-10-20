@@ -5874,6 +5874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BigSquareWindow Variant (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2941798998652950056, guid: aa881a9ce83f7d6439a80957f91754b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa881a9ce83f7d6439a80957f91754b9, type: 3}
 --- !u!4 &7601750051572306231 stripped
