@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Billboarding : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
+
+     void Awake()
+    {
+        target = Camera.main.transform;
+    }
     
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target);
+        transform.LookAt(target.transform);
     }
 }
