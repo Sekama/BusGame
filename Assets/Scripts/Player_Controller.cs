@@ -165,8 +165,7 @@ public class Player_Controller : MonoBehaviour
     }
     private void EndScene()
     {
-        Debug.Log("EndGame");
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
     
