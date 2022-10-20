@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   PasType: 1
-  AccMod: 0
-  BrakeMod: 0
-  SpeedMod: 0
-  TurnMod: 0
+  AccMod: 0.075
+  BrakeMod: 0.075
+  SpeedMod: 5
+  TurnMod: 10
   canDrain: 1
   Money: 20
   NoOfStops: 1
