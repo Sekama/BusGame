@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: 
   PasType: 5
   AccMod: 0
-  BrakeMod: 10
+  BrakeMod: 0.15
   SpeedMod: 0
   TurnMod: 0
   canDrain: 0
