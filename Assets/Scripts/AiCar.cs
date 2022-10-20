@@ -5,9 +5,8 @@ using SplineMesh;
 
 public class AiCar : MonoBehaviour
 {
-    public List<Spline> Splinesss;
-    int index = 0;
-    private Spline _currentSpline;
+    private RoadScript _currentRoad;
+    [SerializeField]private Spline _currentSpline;
     private Rigidbody _rb;
     public float time;
     private bool reverseFlag;
@@ -16,41 +15,22 @@ public class AiCar : MonoBehaviour
     {
         reverseFlag = false;
         _rb = GetComponent<Rigidbody>();
-        index = 0;
+        
         
     }
     private void Start()
     {
-        _currentSpline = Splinesss[index];
-        //gameObject.transform.position = _currentSpline.GetProjectionSample(gameObject.transform.position).location;
+        //CurveSample ClosestPoint = _currentSpline.GetProjectionSample(gameObject.transform.position);
+        //Debug.Log(ClosestPoint.distanceInCurve);
+        float distStart = Vector3.Distance(_currentSpline.nodes[0].Position, gameObject.transform.position);
+        float distEnd = Vector3.Distance(_currentSpline.nodes[_currentSpline.nodes.Count - 1].Position, gameObject.transform.position);
+        gameObject.transform.position = distStart <= distEnd ? _currentSpline.nodes[0].Position : _currentSpline.nodes[_currentSpline.nodes.Count - 1].Position;
     }
     private void FixedUpdate()
     {
-        //if(!reverseFlag)
-        //{
-        //    time += 0.005f;
-        //}
-        //else
-        //{
-        //    time -= 0.005f;
-        //}
-        //if(time <= 0.005)
-        //{
-        //    reverseFlag = false;
-        //}
-        //if(time >= (float)_currentSpline.nodes.Count * 0.99f)
-        //{
-        //    reverseFlag = true;
-        //}
-        Drive();
+        //Drive();
     }
-    public void Test()
-    {
-       
-        //gameObject.transform.position = _currentSpline.GetProjectionSample(gameObject.transform.position).location;
-        
-        //gameObject.transform.rotation = _currentSpline.GetSample(time).Rotation;
-    }
+   
 
     public void Drive()
     {
@@ -68,10 +48,7 @@ public class AiCar : MonoBehaviour
             Debug.Log(Vector3.Distance(_currentSpline.nodes[_currentSpline.nodes.Count - 1].Position, gameObject.transform.position));
             if (Vector3.Distance(_currentSpline.nodes[_currentSpline.nodes.Count - 1].Position, gameObject.transform.position) <= 1f)
             {
-                index++;
-                index %= Splinesss.Count;
-                _currentSpline = Splinesss[index];
-                Debug.Log("Hello");
+                
             }
 
         }
