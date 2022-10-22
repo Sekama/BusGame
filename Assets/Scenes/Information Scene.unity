@@ -181,8 +181,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Passengers are waiting at bus stops to be picked up. \n\nThey pay the
-    busfare on arrival."
+  m_text: "Passengers are waiting at bus stops to be picked up. \n\nThey pay (\u20AC)
+    the busfare on arrival."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45ecd902ef94734999d96512bf912bf, type: 2}
   m_sharedMaterial: {fileID: -3918146582051919577, guid: c45ecd902ef94734999d96512bf912bf, type: 2}
@@ -450,11 +450,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your bus drives on electricity so do not forget to charge it!
-
-
-    spend
-    your money from busfare earned to charge it at recharge stations.'
+  m_text: "Your bus drives on electricity so do not forget to charge it!\n\nspend
+    your money (\u20AC) from busfare earned to charge it at recharge stations."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c45ecd902ef94734999d96512bf912bf, type: 2}
   m_sharedMaterial: {fileID: -3918146582051919577, guid: c45ecd902ef94734999d96512bf912bf, type: 2}
