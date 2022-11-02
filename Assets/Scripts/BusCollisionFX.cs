@@ -12,7 +12,6 @@ public class BusCollisionFX : MonoBehaviour
     {
         if (collision.gameObject.tag == "Buildings")
         {
-            Debug.Log("Hit");
             busCollission.SetBool("isColliding", true);
 
         }
