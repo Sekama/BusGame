@@ -63,7 +63,6 @@ public class PromptScript : MonoBehaviour
 
     private void EnablePrompt(bool bShouldFlipFlop)
     {
-        Debug.Log("Was At Sytation");
         _bHasMessage = true;
         if(bShouldFlipFlop)
         {

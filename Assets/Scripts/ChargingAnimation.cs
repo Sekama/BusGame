@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ChargingAnimation : MonoBehaviour
 {
-    [SerializeField] private Animator particleCharge01, particleCharge02, particleCharge03, particleCharge04;  
+    /*[SerializeField] private Animator particleCharge01, particleCharge02, particleCharge03, particleCharge04;  
     [SerializeField] private Animator particleArea;  
 
     private void OnTriggerStay(Collider other)
@@ -30,5 +30,5 @@ public class ChargingAnimation : MonoBehaviour
             particleCharge04.SetBool("isCharging", false);
             particleArea.SetBool("isCharging", false);
         }        
-    }
+    }*/
 }

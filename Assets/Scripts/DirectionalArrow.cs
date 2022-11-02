@@ -20,7 +20,6 @@ public class DirectionalArrow : MonoBehaviour
     {
         if (!bIsArriving)
         {
-            Debug.Log("Changin Station");
             ChangeActiveStation();
         }
     }

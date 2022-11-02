@@ -17,7 +17,6 @@ public class PickupScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("I Collided");
             other.gameObject.GetComponent<EnergySystem>().AddEnergy(_boostAmt);
             HideSelf();
         }
@@ -34,6 +33,5 @@ public class PickupScript : MonoBehaviour
     private void ShowSelf()
     {
         _pickupLogic.SetActive(true);
-        Debug.Log("I'm Active");
     }
 }
